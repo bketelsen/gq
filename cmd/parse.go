@@ -43,6 +43,15 @@ to quickly create a Cobra application.`,
 			}
 			fmt.Println("Schema:")
 			fmt.Println(sp.Schema)
+			f, err := os.Create("schema.graphql")
+
+			if err != nil {
+
+				fmt.Println(err)
+				os.Exit(1)
+			}
+			_, err = f.WriteString(sp.Schema)
+			f.Close()
 		} else {
 			fmt.Println("package name required, not provided")
 			os.Exit(1)
